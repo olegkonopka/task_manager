@@ -1,0 +1,14 @@
+
+	<div class="panel panel-default">
+	  <div class="panel-body">
+		  	<div class="col-md-9">
+			    <p class="task-creator"><%= current_user.email %> add a new task.</p>
+				<p class="task-title"><%=link_to task.title,task %></p>
+				<p class="task-time">Posted <%= time_ago_in_words(task.created_at)%> ago.</p>
+			</div>
+			<div class="col-md-3">
+				<%=link_to "Edit", edit_task_path(task), remote:false, class: "btn btn-default btn-xs", id: "btn-edit" %>
+				<%=link_to "Delete",task, method: :delete, data: {confirm: "Are you sure???"},class: "btn btn-default btn-xs", id: "btn-delete" %>
+			</div>
+	  </div>
+	</div>

@@ -1,0 +1,73 @@
+<div class="container">
+	
+	<div class="col-md-3">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		  	<div class="text-center">
+		    	<h3 class="panel-title"><p class="greetings-title"><%=current_user.email %></p></h3>
+		    </div>
+		  </div>
+		  <div class="panel-body">
+		  	<div class="text-center">
+		    	<p class="aviable-tasks">Aviable Tasks<div class="task-count"><%=@userTasks.count %></div></p>
+		    </div>
+		  </div>
+		</div>
+	</div>
+	
+
+	<div class="col-md-6">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+			  <div class="text-center">
+			      <p class="my-task-title">Your Tasks</p>
+			  </div>
+		  </div>
+		  <div class="panel-body">
+		       <div class="row">
+		       	<%= link_to "Compose New Task", new_task_path, class: "btn btn-primary", id: "new-task-link", remote:true %>
+		       		
+		       		<div id="user_tasks">
+						<%=render @userTasks %>
+					</div>
+		       </div>
+		  </div>
+		</div>
+		<div class="text-center">
+			<%= will_paginate @userTasks %>
+		</div>
+	</div>
+	
+
+
+	<div class="col-md-3">
+		<div class="panel panel-default">
+				<div class="panel-heading">
+				    <p class="all-task-title">All Tasks</p> 
+				</div>
+			<div class="panel-body">
+				<% @tasks.each do |task| %>
+					<div class="row">
+			       		<div class="panel panel-default">
+						  	<div class="panel-body">
+							  	<div class="col-md-12">
+							  		<div id="general-task">
+							    		<% task.users.each do |e|%>
+											<p class="task-creator-all">
+												<%=e.email %></p>
+										<% end %>
+										<p class="task-title-all"><%= link_to task.title, task %></p>
+								   	</div>
+								</div>
+						  	</div>
+						</div>
+			       	</div>
+		       	<% end %>
+			</div>
+		</div>
+		<div class="text-center">
+		</div>
+	</div>
+</div>
+<%= subscribe_to "/tasks/new" %>
+

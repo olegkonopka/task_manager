@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="text-center">
+		<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="panel panel-default">
+					  <div class="panel-body">
+					    <p class="headers">Title:</p><p id="show"><%=@task.title %></p>
+					    <p class="headers">Description:</p><p id="show"><%=@task.description %></p>
+					    <p class="headers">Start date:</p><p id="show"><%=@task.start_date %></p>
+					    <p class="headers">End date:</p><p id="show"><%=@task.end_date %></p>
+					    <p class="headers">Priority:</p><p id="show"><%=@task.priority %></p>
+
+					   <%=link_to 'Back', root_path, class: "btn btn-default" %>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+		</div>
+		
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<div class="text-center">
+    <% if @task.new_record? %>
+          <%=form_for @task, remote: true do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+                <%= f.label :title %><br/>
+                <%= f.text_field :title , class: "title-field" %><br/>
+
+                <%= f.label :description %><br/>
+                <%= f.text_area :description,class: "description-field" %><br/>
+
+               
+                <%= f.label :start_date %><br/>
+                <%= f.date_select :start_date %><br/>
+            
+           
+                <%= f.label :end_date %><br/>
+                <%= f.date_select :end_date %><br/>
+            
+           
+                <%= f.label :priority %><br/>
+                <%= f.select :priority, options_for_select([[1],[2],[3],[4],[5]]) %><br/>
+            
+           
+                <%= f.label :user_ids, "Authors" %><br/>
+                <%=f.collection_select :user_ids, User.order(:email), :id,:email, {}, { "data-placeholder" => "Select User", multiple: true, id: "task_user_id"} %><br/>
+           
+           
+                <%=f.submit "Add Task", class: "btn btn-default btn-primary", id: "add-task-button" %>
+          
+          <% end %>
+    <% else %>
+         <%=form_for @task do |f| %>
+              <%= render 'shared/error_messages', object: f.object %>
+                <%= f.label :title %><br/>
+                <%= f.text_field :title %><br/>
+         
+                <%= f.label :description %><br/>
+                <%= f.text_area :description %><br/>
+            
+                <%= f.label :start_date %><br/>
+                <%= f.date_select :start_date %><br/>
+  
+                <%= f.label :end_date %><br/>
+                <%= f.date_select :end_date %><br/>
+      
+                <%= f.label :priority %><br/>
+                <%= f.select :priority, options_for_select([[1],[2],[3],[4],[5]]) %><br/>
+        
+                <%= f.label :user_ids, "Authors" %><br/>
+                <%=f.collection_select :user_ids, User.order(:email), :id,:email, {}, { "data-placeholder" => "Select User", multiple: true, id: "task_user_id"} %><br/>
+    
+                <%=f.submit "Update Task", class: "btn btn-default btn-primary", id: "add-task-button" %>
+          
+          <% end %>
+    <% end %>
+</div>

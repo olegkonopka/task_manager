@@ -1,0 +1,6 @@
+
+	$('#new_task').remove();
+	$('#new_task_link').show();
+	<% publish_to "/tasks/new" do %>
+		$('#user_tasks').append('<%= j render(@task) %>');
+	<% end %>
