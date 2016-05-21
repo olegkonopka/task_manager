@@ -1,16 +1,12 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-    
-
-
   devise_for :users
-
  
-    resources :tasks
+  resources :tasks
 
-  
   resources :users
+  
   authenticated :user do
     root 'tasks#index', as: "authenticated_root"
   end
